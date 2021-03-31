@@ -1,5 +1,6 @@
 import React from 'react';
 import { BoxComponent } from './BoxComponent';
+import { Link } from 'react-router-dom';
 
 export function Home (props) {
     return (      
@@ -10,9 +11,9 @@ export function Home (props) {
             <p class="card-text"></p>
           </div>
         </div>
-          <button className="btn btn-info" id="new-record" style={{ position: "relative", marginTop: "8rem", marginLeft: "92rem" }}>
+          <Link className="btn btn-info" to="/add-record" id="new-record" style={{ position: "relative", marginTop: "8rem", marginLeft: "92rem" }}>
           New Record
-          </button>
+          </Link>
 
           <div style={{  display: "flex", marginLeft: "15rem", marginTop: "4rem" }}>
             <BoxComponent name="To Do"/>
