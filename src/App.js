@@ -13,8 +13,8 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Home}></Route>
-            <Route path="/add-record" component={NewRecord}> NewRecord </Route>
-            <Route path="/to-do-list" component={ToDoList}> ToDoList </Route>
+            <Route path="/add-record" component={NewRecord}></Route>
+            <Route path="/to-do-list" component={ToDoList}></Route>
           </Switch>
         </Router>
       </React.Fragment>
