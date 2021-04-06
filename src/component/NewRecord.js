@@ -1,45 +1,90 @@
-import React, { Component } from 'react';
-import background from './background.png';
+import React, { Component } from "react";
+import { Button } from 'react-bootstrap';
 
 export class NewRecord extends Component {
+  constructor(props) {
+    super(props);
 
-    constructor (props) {
-        super(props);
+    this.state = {
+        activityName: "",
+        selectValue: "",
+        activity: {},
+    };    
+  }
 
-        this.state = {
-            activity: []
-        }
-    }
+  handleInputEntry = (e) => {
+    this.setState({
+      activityName: e.target.value,   
+    });
+  }
 
-    handleSubmit (e){
-        this.setState({
-            activity: e.target.value
-        })
-    }
-    render () {        
-        return (
-            <div style={{ width: "30%", margin: "18rem auto", border: "3px solid brown", padding: "5rem", borderRadius: "2rem", 
-            backgroundImage: "url(" + background + ")", backgroundSize: "contain"}}>
-                <form >
-                    <div class="form-group">
-                        <label for="activity">Activity</label>
-                        <input type="email" className="form-control" value={this.state.activity} onChange={this.handleSubmit.bind(this)}
-                        id="activity" placeholder="What is the activity you wanna log?"></input>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1" >Select Category</label>
-                        <select className="form-control" id="option-select" value={this.state.activity} onChange={this.handleSubmit.bind(this)}>
-                            <option>Select Category</option>
-                            <option>To Do</option>
-                            <option>In Progress</option>
-                            <option>Done</option>
-                        </select>
-                    </div>
-                    <button onClick="handleSubmit()" type="submit" className="btn btn-primary mb-2" style={{ marginLeft: "9rem" }}>Submit Activity</button>
-                    <p className="copyright" style={{ textAlign: "center" }}>&copy; Work by <a href="https://peacelive.com">PEACE</a>.</p>
-                </form>
-            </div>
-            
-        )
-    }
+  handleSelectEntry = (e) => {
+    this.setState({
+      selectValue: e.target.value,
+    });
+  }
+
+ getActivity(e) {
+    switch(e) {
+        case (this.state.selectValue === "To Do"):
+            localStorage.getItem("To Do")
+            return localStorage.setItem("To Do", this.state.activityName);
+        case (this.state.selectValue === "In Progress"):
+            localStorage.getItem("In Progress")
+            return localStorage.setItem("To Do", this.state.activityName);
+        case (this.state.selectValue === "Done"):
+            localStorage.getItem("Done", this.state.activityName)
+            return localStorage.setItem("To Do", this.state.activityName);
+        default:
+            return "true";
+       }
+ }
+
+  handleSubmit(e) {
+      alert(`${this.state.activityName} ${this.state.selectValue}`)
+    e.preventDefault();
+    this.setState({
+      activity: {
+        ...this.state.activity,
+        [this.state.activityName]: this.state.selectValue,
+      },
+    });
+    
+    console.log(this.state.activity);
+  };
+
+  render() {
+    return (
+      <div
+      >      
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <div className="form-group">
+            <label htmlFor="activity">Activity</label>
+            <input
+              type="text"
+              className="form-control"
+              value={this.state.activityName}
+              onChange={this.handleInputEntry}
+              id="activity"
+              placeholder="What is the activity you wanna log?"
+            ></input>
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleFormControlSelect1">Select Category</label>
+            <select
+              className="form-control"
+              id="option-select"
+              value={this.state.selectValue}
+              onChange={this.handleSelectEntry}
+            >
+              <option value="To Do">To Do</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Done">Done</option> 
+            </select>
+          </div>
+          <Button type="submit" variant="primary">Add Activity</Button>
+        </form>
+      </div>
+    );
+  }
 }

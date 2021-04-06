@@ -1,36 +1,6 @@
-/* .container-xxl {
-  max-width: 100%;
-  background-color: white;
-
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="form-group"] {
+    width: 100%;
+  }
 }
-
-.container-lg {
-  position: absolute;
-  max-width: 80%;
-  margin-left: 11%;
-  margin-top: 6%;
-  height: 750px;
-  border-radius: 10px;
-  background-color: white;
-  box-shadow: 10px 10px 8px 10px #f1f1f1;
-}
-
-.container-md {
-  position: relative;
-  max-width: 80%;
-  margin-top: 4%;
-  margin-left: 11%;  
-  height: 200px;
-  border-radius: 10px;
-  background-color: rgb(153, 224, 177);
-} */
-
-/* #new-record {
-  position: fixed;
-  margin-left: 1350px;
-  margin-top: 15px;
-} */
-
-/* .card-header {
-  text-align: center;
-} */

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Home } from './component/Home';
 import { NewRecord } from './component/NewRecord';
-import { ToDoList } from './component/ToDoList'; 
+import { ToDoList } from './component/ToDoList';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
